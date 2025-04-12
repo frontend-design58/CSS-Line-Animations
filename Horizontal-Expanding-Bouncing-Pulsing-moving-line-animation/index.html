@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moving Line Animation</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+  <div class="container">
+    <h2>CSS Line Animations</h2>
+    
+    <div class="controls">
+      <button id="btn-horizontal" class="active">Horizontal Moving</button>
+      <button id="btn-expanding">Expanding</button>
+      <button id="btn-bouncing">Bouncing</button>
+      <button id="btn-pulsing">Pulsing</button>
+    </div>
+
+    <div class="animation-wrapper">
+      <div id="horizontal" class="animation-container active">
+        <div class="line-horizontal"></div>
+      </div>
+      
+      <div id="expanding" class="animation-container">
+        <div class="line-expanding"></div>
+      </div>
+      
+      <div id="bouncing" class="animation-container">
+        <div class="line-bouncing"></div>
+      </div>
+      
+      <div id="pulsing" class="animation-container">
+        <div class="line-pulsing"></div>
+      </div>
+    </div>
+    
+    <p>Click the buttons above to switch between different line animations.</p>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('button');
+    const animations = document.querySelectorAll('.animation-container');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons and animations
+        buttons.forEach(btn => btn.classList.remove('active'));
+        animations.forEach(anim => anim.classList.remove('active'));
+        
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        // Get the ID from the button ID
+        const animationId = button.id.replace('btn-', '');
+        
+        // Add active class to corresponding animation
+        document.getElementById(animationId).classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
