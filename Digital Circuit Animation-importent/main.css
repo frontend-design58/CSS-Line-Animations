@@ -1,0 +1,255 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 320px;
+    height: 300px;
+    border: 1px solid #f1f1f1;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* Central dot */
+.center-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    margin-top: -5px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, #B085F5, #7E57C2, #00557F);
+    box-shadow: 0 0 10px rgba(176, 133, 245, 0.8);
+    z-index: 10;
+    animation: glitch 3s infinite;
+}
+
+/* Base styles for all lines */
+.line {
+    position: absolute;
+    border-radius: 999px;
+    box-shadow: -1px 1px 4px rgba(176, 133, 245, 0.5);
+    opacity: 0.3;
+}
+
+/* Vertical lines */
+.line-vertical {
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 7px;
+    background: linear-gradient(to bottom, #B085F5, #7E57C2, #00557F);
+}
+
+/* Horizontal lines */
+.line-horizontal {
+    top: 50%;
+    margin-top: -1px;
+    height: 2px;
+    width: 7px;
+    background: linear-gradient(to right, #B085F5, #7E57C2, #00557F);
+}
+
+/* Vertical line positions (top) */
+.line-v-1 { top: calc(50% - 15px); }
+.line-v-2 { top: calc(50% - 39px); }
+.line-v-3 { top: calc(50% - 63px); }
+
+/* Vertical line positions (bottom) */
+.line-v-4 { top: calc(50% + 15px); }
+.line-v-5 { top: calc(50% + 39px); }
+.line-v-6 { top: calc(50% + 63px); }
+
+/* Horizontal line positions (left) */
+.line-h-1 { left: calc(50% - 15px); }
+.line-h-2 { left: calc(50% - 39px); }
+.line-h-3 { left: calc(50% - 63px); }
+.line-h-4 { left: calc(50% - 87px); }
+
+/* Horizontal line positions (right) */
+.line-h-5 { left: calc(50% + 15px); }
+.line-h-6 { left: calc(50% + 39px); }
+.line-h-7 { left: calc(50% + 63px); }
+.line-h-8 { left: calc(50% + 87px); }
+
+/* Energy pulse animation */
+@keyframes energy-pulse {
+    0% {
+        opacity: 0.3;
+        box-shadow: 0 0 2px rgba(176, 133, 245, 0.3);
+    }
+    5% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(176, 133, 245, 1);
+    }
+    15% {
+        opacity: 0.3;
+        box-shadow: 0 0 2px rgba(176, 133, 245, 0.3);
+    }
+    100% {
+        opacity: 0.3;
+        box-shadow: 0 0 2px rgba(176, 133, 245, 0.3);
+    }
+}
+
+/* Glitch animation for central dot */
+@keyframes glitch {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    92% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    92.5% {
+        transform: translate(-3px, 2px) scale(1.1);
+        opacity: 0.8;
+    }
+    93% {
+        transform: translate(3px, -2px) scale(0.9);
+        opacity: 0.6;
+    }
+    93.5% {
+        transform: translate(-2px, -2px) scale(1.2);
+        opacity: 0.9;
+    }
+    94% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    97% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+    97.5% {
+        transform: translate(2px, 3px) scale(0.9);
+        opacity: 0.7;
+    }
+    98% {
+        transform: translate(-2px, -3px) scale(1.1);
+        opacity: 0.9;
+    }
+    98.5% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Digital data flow animation - sequential energy pulses */
+/* First circuit path */
+.line-v-1 { animation: energy-pulse 4s infinite 0.0s; }
+.line-h-1 { animation: energy-pulse 4s infinite 0.1s; }
+.line-h-5 { animation: energy-pulse 4s infinite 0.2s; }
+.line-v-4 { animation: energy-pulse 4s infinite 0.3s; }
+
+/* Second circuit path - delayed start */
+.line-v-2 { animation: energy-pulse 4s infinite 1.0s; }
+.line-h-2 { animation: energy-pulse 4s infinite 1.1s; }
+.line-h-6 { animation: energy-pulse 4s infinite 1.2s; }
+.line-v-5 { animation: energy-pulse 4s infinite 1.3s; }
+
+/* Third circuit path - more delayed */
+.line-v-3 { animation: energy-pulse 4s infinite 2.0s; }
+.line-h-3 { animation: energy-pulse 4s infinite 2.1s; }
+.line-h-7 { animation: energy-pulse 4s infinite 2.2s; }
+.line-v-6 { animation: energy-pulse 4s infinite 2.3s; }
+
+/* Fourth circuit path - most delayed */
+.line-h-4 { animation: energy-pulse 4s infinite 3.0s; }
+.line-h-8 { animation: energy-pulse 4s infinite 3.1s; }
+
+/* Digital particles */
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: rgba(176, 133, 245, 0.8);
+    border-radius: 50%;
+    z-index: 5;
+    opacity: 0;
+}
+
+.particle-1 {
+    left: calc(50% + 20px);
+    top: calc(50% - 20px);
+    animation: particle-move 3s infinite 0.5s;
+}
+
+.particle-2 {
+    left: calc(50% - 30px);
+    top: calc(50% + 15px);
+    animation: particle-move 2.5s infinite 1.2s;
+}
+
+.particle-3 {
+    left: calc(50% + 40px);
+    top: calc(50% + 30px);
+    animation: particle-move 3.5s infinite 0.8s;
+}
+
+.particle-4 {
+    left: calc(50% - 50px);
+    top: calc(50% - 25px);
+    animation: particle-move 4s infinite 2s;
+}
+
+@keyframes particle-move {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(random(-40, 40), random(-40, 40));
+        opacity: 0;
+    }
+}
+
+/* Occasional circuit overload effect */
+.overload {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, rgba(176, 133, 245, 0.03) 70%);
+    opacity: 0;
+    pointer-events: none;
+    animation: overload 8s infinite;
+}
+
+@keyframes overload {
+    0%, 95%, 100% {
+        opacity: 0;
+    }
+    97%, 98% {
+        opacity: 0.5;
+    }
+}
+
+.title {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
